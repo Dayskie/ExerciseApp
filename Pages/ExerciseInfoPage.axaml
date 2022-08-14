@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" 
+             x:Class="ExerciseApp.Pages.ExerciseInfoPage">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock  Name="WorkoutName" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#7289DA" FontSize="20" FontStyle="Oblique" Text="NAME Exercises"/>
+            <StackPanel Name="ExercisePanel" Grid.Row="1" Grid.Column="1"></StackPanel>
+        </StackPanel>
+        
+        <StackPanel Name="ExerciseInformationData" Grid.Row="0" Grid.Column="1">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="#7289DA" FontSize="20">Exercise Data</TextBlock>
+            <DockPanel Name="ExerciseData">
+                <StackPanel Name="ExerciseDataNamePnl"></StackPanel>
+                <StackPanel Name="ExerciseDataValuePnl"></StackPanel>
+            </DockPanel>
+            <StackPanel Name="Info" Margin="0,5,0,0">
+                <Button Background="#7289da" Foreground="White" Name="Save" Click="SaveData">Save</Button>
+                <Button Background="#7289da" Foreground="White" Name="Back" Click="ReturnToMenu">Back</Button>
+                <Button Background="#7289da" Foreground="White" Name="Edit" Click="EditData">Edit</Button>
+            </StackPanel>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="0" Grid.Column="2">
+            <TextBlock  Name="ExerciseInfo" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#7289DA" FontSize="20" FontStyle="Oblique" Text="EXERCISE NAME info"/>
+            <StackPanel Name="ExerciseInformation">
+                <TextBlock FontSize="20" Foreground="White" Name="WorkoutInfoDescription" TextWrapping="Wrap"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

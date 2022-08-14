@@ -1,0 +1,45 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ExerciseApp.Pages.EditWorkoutPage">
+    <Grid HorizontalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <StackPanel>
+            <TextBox Name="WorkoutName" Text="Workout Name" MinWidth="300" MaxWidth="300" Foreground="White" FontSize="40"/>
+            <StackPanel Grid.Row="1" Grid.Column="0" Name="SelectedExercises"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="50,8,10,0">
+            <DockPanel>
+                <TextBlock Text="Exercises" Foreground="White" FontSize="38"/>
+                <StackPanel>
+                    <Button Click="ReturnToMenu" Foreground="White" Background="#7289da" HorizontalAlignment="Right" Margin="0,0,10,0" FontSize="15" Content="Back"/>
+                    <Button Click="SaveWorkout" Foreground="White" Background="#7289da" HorizontalAlignment="Right" Margin="0,0,10,0" FontSize="15" Content="Save"/>
+                    <Button Click="DeleteWorkout" Foreground="White" Background="#7289da" HorizontalAlignment="Right" Margin="0,0,10,0" FontSize="15" Content="Delete"/>
+                </StackPanel>
+                <TextBlock  Name="Info" TextWrapping="Wrap" IsVisible="False" Foreground="White"/> 
+            </DockPanel>
+            
+            <StackPanel Name="AvaliableExercies"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="1" Grid.Column="2" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0">
+            <TextBlock Foreground="White" Text="HOW TO USE"/>
+            <TextBlock Foreground="White" TextWrapping="Wrap" MaxWidth="220" Name="UseBox">
+                <TextBlock.Text >Enter a name for your workout in the text box above, and then select the workouts you would like included in your workout, and simply press save. </TextBlock.Text>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

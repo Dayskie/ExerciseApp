@@ -1,0 +1,40 @@
+{
+  "workouts": [
+    {
+      "Name": "BenchPress",
+      "Info": "The bench press, or chest press, is a weight training exercise in which the trainee presses a weight upwards while lying on a weight training bench. Bench presses can be used to increase strength, improve endurance, and tone the muscles of the upper body, including the chest, arms, and shoulders.",
+      "Video": "linktovideoorsorucepath",
+      "Type": "Lifting"
+    },
+    {
+      "Name": "Dead Lift",
+      "Info": "The deadlift is a weight training exercise in which a loaded barbell or bar is lifted off the ground to the level of the hips, torso perpendicular to the floor, before being placed back on the ground. It is one of the three powerlifting exercises, along with the squat and bench press.",
+      "Video": "linktovideoorsorucepath",
+      "Type": "Lifting"
+    },
+    {
+      "Name": "Swimming",
+      "Info": "Info about a swimming yada",
+      "Video": "linktovideoorsorucepath",
+      "Type": "Cardio"
+    },
+    {
+      "Name": "Pull-ups",
+      "Info": "Info about a pullup yada",
+      "Video": "linktovideoorsorucepath",
+      "Type": "BodyWeight"
+    },
+    {
+      "Name": "Muscle-ups",
+      "Info": "Info about a pullup yada",
+      "Video": "linktovideoorsorucepath",
+      "Type": "BodyWeight"
+    },
+    {
+      "Name": "Squat",
+      "Info": "Info about a pullup yada",
+      "Video": "linktovideoorsorucepath",
+      "Type": "Lifting"
+    }
+  ]
+}

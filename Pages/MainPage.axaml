@@ -1,0 +1,25 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="ExerciseApp.Pages.MainPage"
+>
+    <UniformGrid >
+        <StackPanel Grid.Row="0" Grid.Column="0">
+            <TextBlock Name="WorkoutName" Text="Workout Menu" Foreground="White" FontSize="50" HorizontalAlignment="Center"/>
+            <DockPanel>
+                <StackPanel Margin="5,0,0,0">
+                    <TextBlock Name="SelectWorkout" FontSize="20" FontStyle="Oblique" Foreground="White" Text="Select A Workout!"/>
+                    <StackPanel Name="WorkoutPanel"></StackPanel>
+                </StackPanel>
+                <StackPanel Margin="100,0,0,0">
+                    <TextBlock FontSize="20" Foreground="White" Text="Creare a Workout!"></TextBlock>
+                    <Button MaxWidth="100" Content="New Workout" Click="NavigateToNewWorkout" Foreground="White" Background="#7289da"/>
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
+        
+        
+    </UniformGrid>
+</UserControl>
