@@ -14,8 +14,8 @@ public class StaticSetter
     public static MainWindow MainWindow { get; set; }
     public static Color Blurple = Color.FromRgb(114, 137, 218);
 
-    public static string WorkoutJsonLoc = @"/Users/106266/Desktop/ExerciseApp-1/workouts.json";
-    public static string WorkoutJsonInfoLoc = AppDomain.CurrentDomain.BaseDirectory + @"/Assets/WorkoutResoruces/workoutsInfo.json";
+    public static string WorkoutJsonLoc = AppDomain.CurrentDomain.BaseDirectory + @"/workouts.json";
+    public static string WorkoutJsonInfoLoc = AppDomain.CurrentDomain.BaseDirectory + @"/workoutsInfo.json";
     public static string WorkoutName { get; set; }
     public static JObject _WorkoutJObject { get; set; }
 }

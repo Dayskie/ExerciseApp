@@ -43,6 +43,9 @@
     </ItemGroup>
     <ItemGroup>
         <AvaloniaResource Include="Assets\**" />
+        <None Include="workoutsInfo.json">
+          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
     <ItemGroup>
       <None Remove="icon.ico" />
@@ -51,5 +54,8 @@
       <AvaloniaResource Include="Assets\icon.ico">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </AvaloniaResource>
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Assets\WorkoutResoruces" />
     </ItemGroup>
 </Project>
