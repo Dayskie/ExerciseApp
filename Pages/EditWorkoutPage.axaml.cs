@@ -91,18 +91,43 @@ public partial class EditWorkoutPage : UserControl
 
     private void SaveWorkout(object sender, RoutedEventArgs e)
     {
-        foreach (var item in SelectedExercises.Children)
+        if (SelectedExercises.Children.Count == 0)
         {
-            if ((item as Button).Content.ToString() != tempWorkoutData.ToString())
+            Info.IsVisible = true;
+            Info.Text = "Must have at least one exercise!";
+        }
+        
+        var workouts = JsonConvert.DeserializeObject<NewWorkout>(File.ReadAllText(StaticSetter.WorkoutJsonLoc));
+        AddExercise tempAdd = new AddExercise();
+        StaticSetter._WorkoutJObject = JObject.Parse(File.ReadAllText(StaticSetter.WorkoutJsonInfoLoc));
+
+        for (int x = 0; x < workouts.workouts.Count; x++)
+        {
+            if (workouts.workouts[x].name != StaticSetter.WorkoutName) { continue; }
+            
+            workouts.workouts[x].name = WorkoutName.Text;
+            workouts.workouts[x].exercises.Clear();
+            
+            foreach (var item in SelectedExercises.Children)
             {
-                Info.IsVisible = true;
-                Info.Text += (item as Button).Content.ToString();
+                string tempInfo = "";
+
+                for (int i = 0; i < StaticSetter._WorkoutJObject["workouts"].Count(); i++)
+                {
+                    if (StaticSetter._WorkoutJObject["workouts"][i]["Name"].ToString() ==
+                        (item as Button).Content.ToString())
+                    {
+                        tempInfo = StaticSetter._WorkoutJObject["workouts"][i]["Type"].ToString();
+                    }
+                }
+                
+                tempAdd.AddExerciseToWorkout(workouts.workouts[x], tempInfo, item);
             }
         }
+        File.WriteAllText(StaticSetter.WorkoutJsonLoc, JsonConvert.SerializeObject(workouts, Formatting.Indented));
     }
     private void LoadExercises(JToken tempWorkoutData)
     {
-
         WorkoutName.Text = tempWorkoutData["name"].ToString();
         
         for (int i = 0; i < tempWorkoutData["exercises"].Count(); i++)

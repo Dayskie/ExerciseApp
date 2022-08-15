@@ -77,46 +77,24 @@ public partial class NewWorkoutPage : UserControl
 
         NewWorkoutExercise workoutExercise = new NewWorkoutExercise();
         workoutExercise.name = WorkoutName.Text;
-        
+
         foreach (var item in SelectedExercises.Children)
         {
             string tempInfo = "";
-            
-            for (int i = 0; i < StaticSetter._WorkoutJObject["workouts"].Count(); i++) {
-                if (StaticSetter._WorkoutJObject["workouts"][i]["Name"].ToString() == (item as Button).Content.ToString())
+
+            for (int i = 0; i < StaticSetter._WorkoutJObject["workouts"].Count(); i++)
+            {
+                if (StaticSetter._WorkoutJObject["workouts"][i]["Name"].ToString() ==
+                    (item as Button).Content.ToString())
                 {
                     tempInfo = StaticSetter._WorkoutJObject["workouts"][i]["Type"].ToString();
                 }
             }
 
-            switch (tempInfo)
-            {
-                case "Lifting":
-                    Lifting lift = new Lifting();
-            
-                    lift.type = (item as Button).Content.ToString();
-                    lift.reps = "0";
-                    lift.weight = "0";
-                    workoutExercise.exercises.Add(lift);
-                    break;
-                case "Cardio":
-                    Cardio cardio = new Cardio();
-            
-                    cardio.type = (item as Button).Content.ToString();
-                    cardio.distance = "0";
-                    cardio.time = "0";
-                    workoutExercise.exercises.Add(cardio);
-                    break;
-                
-                case "BodyWeight":
-                    BodyWeight bodyweight = new BodyWeight();
-            
-                    bodyweight.type = (item as Button).Content.ToString();
-                    bodyweight.reps = "0";
-                    workoutExercise.exercises.Add(bodyweight);
-                    break;
-            }
+            AddExercise tempAdd = new AddExercise();
+            tempAdd.AddExerciseToWorkout(workoutExercise, tempInfo, item);
         }
+
         var workouts = JsonConvert.DeserializeObject<NewWorkout>(File.ReadAllText(StaticSetter.WorkoutJsonLoc));
         workouts.workouts.Add(workoutExercise);
         File.WriteAllText(StaticSetter.WorkoutJsonLoc, JsonConvert.SerializeObject(workouts, Formatting.Indented));
