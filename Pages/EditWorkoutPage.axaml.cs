@@ -97,6 +97,13 @@ public partial class EditWorkoutPage : UserControl
             Info.Text = "Must have at least one exercise!";
         }
         
+        if(StaticSetter._WorkoutJObject.SelectToken($"$.workouts[?(@.name == '{WorkoutName.Text}')]")?["name"].ToString() != null && StaticSetter.WorkoutName != WorkoutName.Text)
+        {
+            Info.IsVisible = true;
+            Info.Text = "This workout name already exists!";
+            return;
+        }
+        
         var workouts = JsonConvert.DeserializeObject<NewWorkout>(File.ReadAllText(StaticSetter.WorkoutJsonLoc));
         AddExercise tempAdd = new AddExercise();
         StaticSetter._WorkoutJObject = JObject.Parse(File.ReadAllText(StaticSetter.WorkoutJsonInfoLoc));

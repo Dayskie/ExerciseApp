@@ -35,6 +35,18 @@
       "Info": "A squat is a strength exercise in which the trainee lowers their hips from a standing position and then stands back up. During the descent of a squat, the hip and knee joints flex while the ankle joint dorsiflexes; conversely the hip and knee joints extend and the ankle joint plantarflexes when standing up. ",
       "Video": "linktovideoorsorucepath",
       "Type": "Lifting"
+    },
+    {
+      "Name": "Lunge",
+      "Info": "Lunges are a popular strength training exercise among people wanting to strengthen, sculpt, and tone their bodies, while also improving overall fitness and enhancing athletic performance. This resistance exercise is popular for its ability to strengthen your back, hips, and legs, while improving mobility and stability.",
+      "Video": "linktovideoorsorucepath",
+      "Type": "BodyWeight"
+    },
+    {
+      "Name": "Bulgarian Split Squat",
+      "Info": "Benefits of the Bulgarian split squat abound. As a lower body exercise, it strengthens the muscles of the legs, including the quads, hamstrings, glutes, and calves. Also, as a single-leg exercise, your core is forced to work in overdrive to maintain your balance.",
+      "Video": "linktovideoorsorucepath",
+      "Type": "Lifting"
     }
   ]
 }
