@@ -67,6 +67,7 @@ public partial class NewWorkoutPage : UserControl
 
     private void SaveWorkout(object sender, RoutedEventArgs e)
     {
+        // Checks if any exercises have actually been added before saving
         if (SelectedExercises.Children.Count == 0)
         {
             Info.IsVisible = true;
@@ -77,7 +78,8 @@ public partial class NewWorkoutPage : UserControl
 
         NewWorkoutExercise workoutExercise = new NewWorkoutExercise();
         workoutExercise.name = WorkoutName.Text;
-
+        
+        // loops through the selected exercises and gets their "type" (lifting, bodyweight, cardio)
         foreach (var item in SelectedExercises.Children)
         {
             string tempInfo = "";
@@ -90,11 +92,13 @@ public partial class NewWorkoutPage : UserControl
                     tempInfo = StaticSetter._WorkoutJObject["workouts"][i]["Type"].ToString();
                 }
             }
-
+            
             AddExercise tempAdd = new AddExercise();
             tempAdd.AddExerciseToWorkout(workoutExercise, tempInfo, item);
         }
-
+        
+        // Creates a workout class that matches the structure of the Json workouts 
+        // then adds this to the existing file before serializing 
         var workouts = JsonConvert.DeserializeObject<NewWorkout>(File.ReadAllText(StaticSetter.WorkoutJsonLoc));
         workouts.workouts.Add(workoutExercise);
         File.WriteAllText(StaticSetter.WorkoutJsonLoc, JsonConvert.SerializeObject(workouts, Formatting.Indented));
@@ -104,7 +108,9 @@ public partial class NewWorkoutPage : UserControl
     
     private void RemoveExercise(object sender, RoutedEventArgs e)
     {
-        //Sender is the specific exercise you clicked on
+        // Sender is the specific exercise you clicked on
+        // loops through the list of exercises you have selected until it lands
+        // on the one that matches senders name, then removes it
         for (int i = 0; i < SelectedExercises.Children.Count; i++) {
             if ((SelectedExercises.Children[i] as Button).Content.ToString() == (sender as Button).Content.ToString())
             {
@@ -120,6 +126,8 @@ public partial class NewWorkoutPage : UserControl
 
     private bool CheckForDuplicates()
     {
+        // Checks if the workout name already exists bu searching through the workouts.json 
+        // workouts with the same name crash the program, so we want to avoid that
         var temp = JObject.Parse(File.ReadAllText(StaticSetter.WorkoutJsonLoc));
         if(temp.SelectToken($"$.workouts[?(@.name == '{WorkoutName.Text}')]")?["name"].ToString() != null)
         {

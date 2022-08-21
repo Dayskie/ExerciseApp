@@ -33,7 +33,10 @@ public partial class ExerciseInfoPage : UserControl
         ExercisePanel.Children.Clear();
         ExerciseDataNamePnl.Children.Clear();
         ExerciseDataValuePnl.Children.Clear();
-
+        
+        // loops through the workouts from "workouts.json" and displays them 
+        // as buttons 
+        
         var temp = _jObject.SelectToken($"$.workouts[?(@.name == '{workoutName}')]");
         foreach (var item in temp["exercises"])
         {
@@ -53,7 +56,10 @@ public partial class ExerciseInfoPage : UserControl
     {
         ExerciseDataNamePnl.Children.Clear();
         ExerciseDataValuePnl.Children.Clear();
-
+        
+        // loops through the specific exercises from the 
+        // selected button (sender is the button user clicked)
+        
         string? exerciseBtnName = (sender as Button)?.Content.ToString();
         JToken? temp =
             StaticSetter._WorkoutJObject.SelectToken($"$.workouts[?(@.name == '{StaticSetter.WorkoutName}')].exercises.[?(@.type == '{exerciseBtnName}')]");
@@ -92,6 +98,7 @@ public partial class ExerciseInfoPage : UserControl
 
     private void TextEdited(object sender, TextInputEventArgs e)
     {
+        // Checks 
         TextBox TextBoxTemp = (TextBox)sender;
         JToken? tempExercise =
             StaticSetter._WorkoutJObject.SelectToken(
